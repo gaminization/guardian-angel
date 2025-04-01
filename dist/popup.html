@@ -1,16 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Harassment Shield</title>
-  <link rel="stylesheet" href="popup.css">
+  <title>Guardian Angel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 340px;
+      color: #333;
+      background-color: #fff;
+    }
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #dc3545;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+    h1 svg {
+      margin-right: 10px;
+    }
+    .toggle-container, .sensitivity-container {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stats-container {
+      background-color: rgba(220, 53, 69, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(220, 53, 69, 0.1);
+    }
+    .stats-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .stats-item:last-child {
+      margin-bottom: 0;
+    }
+    .stats-item span:last-child {
+      font-weight: 500;
+      color: #dc3545;
+    }
+    button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    button:hover {
+      background-color: #c82333;
+    }
+    select {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      background-color: #f8f9fa;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .3s;
+      border-radius: 26px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #dc3545;
+    }
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+    label {
+      font-weight: 500;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Harassment Shield</h1>
+    <h1>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#dc3545">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+      </svg>
+      Guardian Angel
+    </h1>
+    
     <div class="toggle-container">
-      <label for="enableDetection">Enable Detection</label>
-      <input type="checkbox" id="enableDetection" checked>
+      <label for="enableDetection">Enable Protection</label>
+      <label class="switch">
+        <input type="checkbox" id="enableDetection" checked>
+        <span class="slider"></span>
+      </label>
     </div>
+    
     <div class="sensitivity-container">
       <label for="sensitivity">Detection Sensitivity</label>
       <select id="sensitivity">
@@ -19,9 +148,22 @@
         <option value="high">High</option>
       </select>
     </div>
+    
     <div class="stats-container">
-      <p>Harassment detected: <span id="detectionCount">0</span></p>
+      <div class="stats-item">
+        <span>Harassment detected:</span>
+        <span id="detectionCount">0</span>
+      </div>
+      <div class="stats-item">
+        <span>Training data provided:</span>
+        <span id="trainingDataCount">0</span>
+      </div>
+      <div class="stats-item">
+        <span>Excessive incidents:</span>
+        <span id="excessiveCount">0</span>
+      </div>
     </div>
+    
     <button id="clearStats">Clear Statistics</button>
   </div>
   <script src="popup.js"></script>
