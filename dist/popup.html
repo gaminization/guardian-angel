@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Harassment Shield</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Harassment Shield</h1>
+    <div class="toggle-container">
+      <label for="enableDetection">Enable Detection</label>
+      <input type="checkbox" id="enableDetection" checked>
+    </div>
+    <div class="sensitivity-container">
+      <label for="sensitivity">Detection Sensitivity</label>
+      <select id="sensitivity">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div class="stats-container">
+      <p>Harassment detected: <span id="detectionCount">0</span></p>
+    </div>
+    <button id="clearStats">Clear Statistics</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
