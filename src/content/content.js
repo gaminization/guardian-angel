@@ -1,3 +1,7 @@
+/******/ (() => { // webpackBootstrap
+/*!********************************!*\
+  !*** ./src/content/content.js ***!
+  \********************************/
 // Initialize settings
 let enabled = true;
 let sensitivity = 'medium';
@@ -131,3 +135,7 @@ function highlightHarassment(text, confidence) {
     banner.remove();
   }, 5000);
 }
+
+/******/ })()
+;
+//# sourceMappingURL=content.js.map

@@ -2,6 +2,10 @@
 /*!********************************!*\
   !*** ./src/content/content.js ***!
   \********************************/
+/******/ (() => { // webpackBootstrap
+/*!********************************!*\
+  !*** ./src/content/content.js ***!
+  \********************************/
 // Initialize settings
 let enabled = true;
 let sensitivity = 'medium';
@@ -136,6 +140,9 @@ function highlightHarassment(text, confidence) {
   }, 5000);
 }
 
+/******/ })()
+;
+//# sourceMappingURL=content.js.map
 /******/ })()
 ;
 //# sourceMappingURL=content.js.map
