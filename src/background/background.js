@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 try {
     // Initialize the local LLM service
     let llmServiceReady = false;
@@ -185,3 +186,46 @@ try {
   }
   
 
+=======
+// Function to analyze text using a local LLM service
+async function analyzeWithLocalLLM(text, sensitivity) {
+  try {
+    // Check if service is available
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+    
+    const response = await fetch(llmServiceUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: text,
+        sensitivity: sensitivity
+      }),
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return {
+      isHarassment: data.isHarassment,
+      confidence: data.confidence || 0.5,
+      text: text
+    };
+  } catch (error) {
+    console.error('Error analyzing text with local LLM:', error);
+    // Return a default response instead of using keyword fallback
+    return {
+      isHarassment: false,
+      confidence: 0.1,
+      text: text
+    };
+  }
+}
+>>>>>>> Stashed changes
